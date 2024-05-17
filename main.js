@@ -3,9 +3,6 @@ import BirdAnimation from "./Bird.js";
 
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
-const canvasWidth = canvas.width;
-const canvasHeight = canvas.height;
-
 //Chargement du background
 const backgroundArray = [];
 for (let i = 0; i < 3; i++) {
@@ -33,7 +30,7 @@ async function loadData() {
 }
 const spriteSheet = await loadData();
 // Initialisation de l'objet bird
-const bird = new BirdAnimation(spriteSheet, canvas);
+const bird = new BirdAnimation(spriteSheet, canvas, 20);
 const spriteImg = await loadImage(bird.fileUrl);
 
 //Chargement de la première sprite
@@ -66,16 +63,16 @@ window.addEventListener("keydown", handleControls);
 function handleControls(e) {
   switch (e.key) {
     case "ArrowLeft":
-      bird.x = bird.x - 10;
+      bird.x = bird.x - bird.speed;
       break;
     case "ArrowRight":
-      bird.x = bird.x + 10;
+      bird.x = bird.x + bird.speed;
       break;
     case "ArrowUp":
-      bird.y = bird.y - 10;
+      bird.y = bird.y - bird.speed;
       break;
     case "ArrowDown":
-      bird.y = bird.y + 10;
+      bird.y = bird.y + bird.speed;
       break;
   }
 }

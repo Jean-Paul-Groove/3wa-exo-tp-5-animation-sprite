@@ -9,8 +9,9 @@ export default class BirdAnimation {
   #scale = 0.5;
   #canvasHeight;
   #canvasWidth;
+  #speed;
 
-  constructor(spriteSheet, canvas) {
+  constructor(spriteSheet, canvas, speed) {
     this.#fileUrl = spriteSheet.file;
     this.#width = spriteSheet.sprites[0].width;
     this.#height = spriteSheet.sprites[0].height;
@@ -20,6 +21,7 @@ export default class BirdAnimation {
     this.#canvasWidth = canvas.width;
     this.#x = this.#canvasWidth / 2;
     this.#y = this.#canvasHeight / 2;
+    this.#speed = speed;
   }
   get spriteIndex() {
     return this.#spriteIndex;
@@ -41,6 +43,9 @@ export default class BirdAnimation {
   }
   get scale() {
     return this.#scale;
+  }
+  get speed() {
+    return this.#speed;
   }
   set y(number) {
     console.log(number);
